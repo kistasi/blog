@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
-const adminRouting = require('./routes/AdminRouter');
+const adminRouting = require('./routes/admin/AdminRouter');
 const frontRouting = require('./routes/FrontRouter');
 
 /* Config */
