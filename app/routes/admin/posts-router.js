@@ -1,5 +1,5 @@
 const adminPostsRouter = require('express').Router();
-const postsController = require('../../controllers/admin/PostsController');
+const postsController = require('../../controllers/admin/posts-controller');
 
 adminPostsRouter.get('/index', postsController.index);
 adminPostsRouter.get('/create', postsController.create);

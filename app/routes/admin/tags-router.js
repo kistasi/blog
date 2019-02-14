@@ -1,5 +1,5 @@
 const adminTagsRouter = require('express').Router();
-const tagsController = require('../../controllers/admin/TagsController');
+const tagsController = require('../../controllers/admin/tags-controller');
 
 adminTagsRouter.get('/index', tagsController.index);
 adminTagsRouter.get('/create', tagsController.create);

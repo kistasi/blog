@@ -1,8 +1,8 @@
 const adminRouter = require('express').Router();
-const postsRouter = require('./PostsRouter');
-const usersRouter = require('./UsersRouter');
-const categoriesRouter = require('./CategoriesRouter');
-const tagsRouter = require('./TagsRouter');
+const postsRouter = require('./posts-router');
+const usersRouter = require('./users-router');
+const categoriesRouter = require('./categories-router');
+const tagsRouter = require('./tags-router');
 
 adminRouter.use('/posts', postsRouter);
 adminRouter.use('/users', usersRouter);

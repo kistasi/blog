@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
-const adminRouting = require('./routes/admin/AdminRouter');
-const frontRouting = require('./routes/FrontRouter');
+const adminRouting = require('./app/routes/admin/admin-router');
+const frontRouting = require('./app/routes/front-router');
 
 /* Config */
 const port = process.env.PORT || 3000;
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 /* Template engine */
 app.set('view engine', 'pug');
-app.set('views', [__dirname, '/views'].join(''));
+app.set('views', [__dirname, '/app/views'].join(''));
 
 /* Resources */
 app.use('/admin', adminRouting);
