@@ -14,17 +14,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/* Template engine */
-app.set('view engine', 'pug');
-app.set('views', [__dirname, '/app/views'].join(''));
-
 /* Resources */
 app.use('/admin', adminRouting);
 app.use(frontRouting);
 
 /* Handle 404 */
 app.use((req, res) => {
-  res.render('errors/404');
+  res.status(404).json({ message: 'Page not found!' });
 });
 
 app.listen(port, () => console.log(`Application is listening on port ${port}...`));
