@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const TagSchema = new mongoose.Schema(
   {
     title: String,
-    description: Date,
+    description: String,
   },
   { timestamps: true },
 );

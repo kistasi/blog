@@ -1,23 +1,49 @@
+const TagModel = require('../../models/tag');
+
 module.exports = {
-  index: (req, res) => {
-    res.send('tags admin index');
+  list: (req, res) => {
+    TagModel.find({}, ['title', 'description'], (err, allTagDocuments) => {
+      if (err) {
+        res.status(500).end();
+      }
+
+      res.status(200).json(allTagDocuments);
+    });
   },
   create: (req, res) => {
-    res.send('tags admin create');
-  },
-  store: (req, res) => {
-    res.send('tags admin store');
-  },
-  show: (req, res) => {
-    res.send('tags admin show');
-  },
-  edit: (req, res) => {
-    res.send('tags admin edit');
+    if (req.body.title === undefined) {
+      res.status(422).send({ message: 'Title is required!' });
+    }
+
+    const tag = new TagModel(req.body);
+    tag.save((err, tagDocument) => {
+      if (err) {
+        res.status(500).end();
+      }
+
+      res.status(201).send(tagDocument);
+    });
   },
   update: (req, res) => {
-    res.send('tags admin update');
+    TagModel.findByIdAndUpdate(req.params.id, req.body, (err, tagDocument) => {
+      if (err) {
+        res.status(500).end();
+      }
+
+      res.status(202).json(tagDocument);
+    });
   },
-  destory: (req, res) => {
-    res.send('tags admin destroy');
+  delete: (req, res) => {
+    if (req.params.id === undefined) {
+      res.status(422).json({ message: 'Missing id param!' });
+    }
+
+    TagModel.findByIdAndDelete(req.params.id, (err) => {
+      if (err) {
+        res.status(500).end();
+      }
+
+      res.status(200).end();
+    });
   },
 };
